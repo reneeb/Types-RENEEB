@@ -9,12 +9,12 @@ use Test::More;
 
 use_ok 'Types::OTRS';
 
-Types::OTRS->import('OTRSVersion');
+Types::OTRS->import('OTRSVersionWildcard');
 
-my $Version = OTRSVersion();
+my $Version = OTRSVersionWildcard();
 
-my @good = qw(2.0.0 31.0.0 13.13.13);
-my @bad  = (undef, qw/test 0 2 4.5 2.2.x 2.x/);
+my @good = qw(2.0.0 2.1.x 31.0.0 31.x 13.0.x 13.13.13);
+my @bad  = (undef, qw/test 0 2 4.5/);
 
 for my $good ( @good ) {
     ok $Version->($good);

@@ -6,10 +6,7 @@ use strict;
 use warnings;
 
 use Test::More;
-
-use_ok 'Types::OTRS';
-
-Types::OTRS->import('OTRSVersion');
+use Types::RENEEB qw(OTRSVersion);
 
 my $Version = OTRSVersion();
 
