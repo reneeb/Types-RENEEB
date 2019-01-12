@@ -17,13 +17,18 @@ our $VERSION = 0.01;
 declare OTRSVersion =>
     as Str,
     where {
-        ($_ =~ m{ \A (?: [0-9]+ \. ){2} (?: [0-9]+ ) \z }xms;
+        $_ =~ m{ \A (?: [0-9]+ \. ){2} (?: [0-9]+ ) \z }xms
     };
 
 declare OTRSVersionWildcard =>
     as Str,
     where {
-        ($_ =~ m{ \A (?: [0-9]+ \. ){1,2} (?: [0-9]+ | x ) \z }xms;
+        $_ =~ m{
+            \A (?:
+                (?: [0-9]+ \. ){2} (?: [0-9]+ ) |
+                (?: [0-9]+ \. ){1,2} x
+            ) \z
+        }xms
     };
 
 1;

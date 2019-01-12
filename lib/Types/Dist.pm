@@ -1,32 +1,38 @@
-package Types::RENEEB;
+package Types::Dist;
 
 use v5.10;
 
 use strict;
 use warnings;
 
-use Moo;
-
-extends 'Types::OTRS';
-
 use Type::Library
    -base,
-   -declare => qw( ISODateTime AddressType2Code CountryCode );
+   -declare => qw( DistName DistVersion );
 
 use Type::Utils -all;
 use Types::Standard -types;
 
-our $VERSION = 0.02;
+our $VERSION = '0.01';
 
-use DateTime;
-
-declare ISODateTime =>
+declare DistName =>
     as Str,
     where {
-        ($_ =~ m{\A-?[0-9]{4,}-[0-9]{2}-[0-9]{2}T[0-2][0-9]:[0-5][0-9]:[0-5][0-9](?:Z|[-+]?[0-2][0-9]:[0-5][0-9])?\z}) &&
-        (validate_datetime($_))
+        $_ =~ m{\A
+            ([A-Za-z][A-Za-z0-9]*)
+            (?: - [A-Za-z0-9]+ )*
+        \z}
     };
 
-
+declare DistVersion =>
+    as Str,
+    where {
+        $_ =~ m{\A
+            v?
+            (?:
+                [0-9]+
+                (?: \. [0-9] ){0,2}
+            )
+        \z}xms
+    };
 
 1;
