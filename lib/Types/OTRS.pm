@@ -14,7 +14,7 @@ use Type::Library
 use Type::Utils -all;
 use Types::Standard -types;
 
-our $VERSION = 0.01;
+our $VERSION = '0.02';
 
 declare OTRSVersion =>
     as Str,

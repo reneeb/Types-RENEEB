@@ -10,7 +10,7 @@ use warnings;
 use Type::Library -base;
 use Type::Utils ();
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 Type::Utils::extends(qw/Types::OTRS Types::Dist/);
 
