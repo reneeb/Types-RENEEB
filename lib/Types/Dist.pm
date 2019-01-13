@@ -9,33 +9,40 @@ use warnings;
 
 use Type::Library
    -base,
-   -declare => qw( DistName DistVersion );
+   -declare => qw( DistName DistVersion DistFQ );
 
 use Type::Utils -all;
 use Types::Standard -types;
 
 our $VERSION = '0.01';
 
+my $distname_re = qr{
+    (?:[A-Za-z][A-Za-z0-9]*)
+    (?: - [A-Za-z0-9]+ )*
+}xms;
+
+my $distversion_re = qr{
+    v?
+    (?:
+        [0-9]+
+        (?: \. [0-9]+ )*
+    )
+}xms;
+
+my $distfq_re = qr{$distname_re-$distversion_re};
+
+
 declare DistName =>
     as Str,
-    where {
-        $_ =~ m{\A
-            (?:[A-Za-z][A-Za-z0-9]*)
-            (?: - [A-Za-z0-9]+ )*
-        \z}xms;
-    };
+    where { $_ =~ m{\A$distname_re\z} };
 
 declare DistVersion =>
     as Str,
-    where {
-        $_ =~ m{\A
-            v?
-            (?:
-                [0-9]+
-                (?: \. [0-9]+ )*
-            )
-        \z}xms
-    };
+    where { $_ =~ m{\A$distversion_re\z} };
+
+declare DistFQ =>
+    as Str,
+    where { $_ =~ m{\A$distfq_re\z} };
 
 1;
 
@@ -48,4 +55,8 @@ A name of a distribution
 =head2 DistVersion
 
 A version of a distribution
+
+=head2 DistFQ
+
+I<DistName>-I<DistFQ>
 
