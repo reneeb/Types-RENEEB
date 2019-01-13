@@ -7,22 +7,12 @@ use v5.10;
 use strict;
 use warnings;
 
-use parent 'Exporter';
-
-use Module::Runtime qw(use_module);
+use Type::Library -base;
+use Type::Utils ();
 
 our $VERSION = '0.01';
 
-my @types;
-
-for my $mod ( qw/Types::OTRS Types::Dist/ ) {
-    use_module $mod;
-    my @mod_types = $mod->type_names;
-    $mod->import( @mod_types );
-    push @types, @mod_types;
-}
-
-our @EXPORT_OK = @types;
+Type::Utils::extends(qw/Types::OTRS Types::Dist/);
 
 1;
 
