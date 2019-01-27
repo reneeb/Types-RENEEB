@@ -16,7 +16,7 @@ use Types::Standard -types;
 
 use Module::CPANfile;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 my $distname_re = qr{
     (?:[A-Za-z][A-Za-z0-9]*)
