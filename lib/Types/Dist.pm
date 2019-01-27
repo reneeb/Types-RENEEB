@@ -9,10 +9,12 @@ use warnings;
 
 use Type::Library
    -base,
-   -declare => qw( DistName DistVersion DistFQ );
+   -declare => qw( DistName DistVersion DistFQ CPANfile );
 
 use Type::Utils -all;
 use Types::Standard -types;
+
+use Module::CPANfile;
 
 our $VERSION = '0.02';
 
@@ -43,6 +45,12 @@ declare DistVersion =>
 declare DistFQ =>
     as Str,
     where { $_ =~ m{\A$distfq_re\z} };
+
+class_type CPANfile, { class => 'Module::CPANfile' };
+
+coerce CPANfile,
+    from Str, via { Module::CPANfile->load( $_ ) }
+;
 
 1;
 
