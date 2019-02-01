@@ -41,6 +41,15 @@ version 0.03
 
 `Types::RENEEB` is a collection of types I need very often
 
+# MODULES
+
+These `Types::` modules are shipped in this distribution:
+
+- [Types::Dist](https://metacpan.org/pod/Types::Dist)
+- [Types::OTRS](https://metacpan.org/pod/Types::OTRS)
+
+`Types::RENEEB` inherits the types of the mentioned modules.
+
 
 
 # Development

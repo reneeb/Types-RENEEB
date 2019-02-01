@@ -66,5 +66,5 @@ A version of a distribution
 
 =head2 DistFQ
 
-I<DistName>-I<DistFQ>
+I<DistName>-I<DistVersion>
 

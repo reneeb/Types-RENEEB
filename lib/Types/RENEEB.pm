@@ -47,4 +47,18 @@ Type::Utils::extends(qw/Types::OTRS Types::Dist/);
 
 C<Types::RENEEB> is a collection of types I need very often
 
+=head1 MODULES
+
+These C<Types::> modules are shipped in this distribution:
+
+=over 4
+
+=item * L<Types::Dist>
+
+=item * L<Types::OTRS>
+
+=back
+
+C<Types::RENEEB> inherits the types of the mentioned modules.
+
 =cut
