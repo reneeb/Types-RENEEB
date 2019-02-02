@@ -8,7 +8,7 @@ Types::RENEEB - Several predefined Type::Tiny types
 
 # VERSION
 
-version 0.04
+version 0.05
 
 # SYNOPSIS
 
