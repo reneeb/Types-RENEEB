@@ -70,4 +70,22 @@ E.g. Addons for OTRS 6.x can be installed on any OTRS 6 installation, whilst add
 define 2.4.x as the framework version can only installed on any OTRS 2.4 installation, but
 not on OTRS 2.3 installation.
 
+=head2 OPMFile
+
+An object of L<OTRS::OPM::Parser>.
+
+It checks if the file exists and can be parsed without an error.
+
+=head1 COERCIONS
+
+=head2 OPMFile
+
+=over 4
+
+=item * From String to OTRS::OPM::Parser
+
+When a string is given, it is coerced into an L<OTRS::OPM::Parser> object.
+
+=back
+
 =cut
