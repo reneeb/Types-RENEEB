@@ -35,11 +35,18 @@ declare OTRSVersionWildcard =>
     };
 
 declare OPMFile =>
-    as InstanceOf['OTRS::OPM::Parser'];
+    as InstanceOf['OTRS::OPM::Parser'],
+    where {
+        $_->opm_file =~ m{\.s?opm\z} &&
+        $_->error_string eq '';
+    }
+;
 
 coerce OPMFile =>
     from Str,
         via {
+            return if !-f $_;
+
             my $p = OTRS::OPM::Parser->new( opm_file => $_ );
             $p->parse;
             $p;
