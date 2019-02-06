@@ -15,7 +15,7 @@ use Type::Utils -all;
 use Types::Standard -types;
 use OTRS::OPM::Parser;
 
-our $VERSION = '0.02';
+our $VERSION = 0.03;
 
 declare OTRSVersion =>
     as Str,
