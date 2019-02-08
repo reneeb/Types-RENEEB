@@ -37,8 +37,8 @@ declare OTRSVersionWildcard =>
 declare OPMFile =>
     as InstanceOf['OTRS::OPM::Parser'],
     where {
-        $_->opm_file =~ m{\.s?opm\z} &&
-        $_->error_string eq '';
+        $_->opm_file =~ m{\.s?opm\z} and
+        ( $_->error_string eq '' or $_->error_string =~ m{Invalid value for maxOccurs} );
     }
 ;
 
