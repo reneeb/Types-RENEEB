@@ -15,8 +15,6 @@ use Type::Utils -all;
 use Types::Standard -types;
 use OTRS::OPM::Parser;
 
-our $VERSION = 0.05;
-
 declare OTRSVersion =>
     as Str,
     where {
@@ -37,8 +35,7 @@ declare OTRSVersionWildcard =>
 declare OPMFile =>
     as InstanceOf['OTRS::OPM::Parser'],
     where {
-        $_->opm_file =~ m{\.s?opm\z} and
-        ( $_->error_string eq '' or $_->error_string =~ m{Invalid value for maxOccurs} );
+        $_->opm_file =~ m{\.s?opm\z} and $_->error_string eq '';
     }
 ;
 

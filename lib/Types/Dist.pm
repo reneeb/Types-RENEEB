@@ -16,8 +16,6 @@ use Types::Standard -types;
 
 use Module::CPANfile;
 
-our $VERSION = '0.03';
-
 my $distname_re = qr{
     (?:[A-Za-z][A-Za-z0-9]*)
     (?: - [A-Za-z0-9]+ )*
@@ -56,15 +54,52 @@ coerce CPANfile,
 
 =head1 TYPES
 
+=head2 DistFQ
+
+I<DistName>-I<DistVersion>
+
+    package MyClass;
+
+    use Moo;
+    use Types::Dist qw(DistName);
+
+    has dist => ( is => 'ro', isa => DistName );
+
+    1;
+
+And then use your class:
+
+    my $object   = MyClass->new( dist => 'Types-RENEEB-0.09' );
+    my $object   = MyClass->new( dist => '0.09' );         # fails
+    my $object   = MyClass->new( dist => 'Types-RENEEB' ); # fails
+
 =head2 DistName
 
 A name of a distribution
+
+    my $object   = MyClass->new( dist => 'Types-RENEEB' ); # ok
 
 =head2 DistVersion
 
 A version of a distribution
 
-=head2 DistFQ
+    my $object   = MyClass->new( dist => '0.09' ); # ok
 
-I<DistName>-I<DistVersion>
+=head2 CPANfile
+
+An instance of L<Module::CPANfile>
+
+    package MyClass;
+
+    use Moo;
+    use Types::Dist qw(CPANfile);
+
+    has prereqs => ( is => 'ro', isa => CPANfile, coerce => 1 );
+
+    1;
+
+And then use your class:
+
+    my $object   = MyClass->new( prereqs => '/path/to/cpanfile' );
+    my @features = $object->prereqs->features; # call features method from Module::CPANfile
 
