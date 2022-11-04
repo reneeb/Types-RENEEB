@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<opm_package version="1.0">
+<otrs_package version="1.0">
     <CVS>$Id: QuickMerge.sopm,v 1.1.1.1 2011/04/15 07:49:58 rb Exp $</CVS>
     <Name>QuickMerge</Name>
     <Version>3.3.2</Version>
