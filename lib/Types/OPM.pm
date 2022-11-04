@@ -1,6 +1,6 @@
-package Types::OTRS;
+package Types::OPM;
 
-# ABSTRACT: OTRS related types
+# ABSTRACT: OPM related types
 
 use v5.10;
 
@@ -9,19 +9,19 @@ use warnings;
 
 use Type::Library
    -base,
-   -declare => qw(OTRSVersion OTRSVersionWildcard OPMFile);
+   -declare => qw(OPMVersion OPMVersionWildcard OPMFile);
 
 use Type::Utils -all;
 use Types::Standard -types;
-use OTRS::OPM::Parser;
+use OPM::Parser;
 
-declare OTRSVersion =>
+declare OPMVersion =>
     as Str,
     where {
         $_ =~ m{ \A (?: [0-9]+ \. ){2} (?: [0-9]+ ) \z }xms
     };
 
-declare OTRSVersionWildcard =>
+declare OPMVersionWildcard =>
     as Str,
     where {
         $_ =~ m{
@@ -33,7 +33,7 @@ declare OTRSVersionWildcard =>
     };
 
 declare OPMFile =>
-    as InstanceOf['OTRS::OPM::Parser'],
+    as InstanceOf['OPM::Parser'],
     where {
         $_->opm_file =~ m{\.s?opm\z} and $_->error_string eq '';
     }
@@ -44,7 +44,7 @@ coerce OPMFile =>
         via {
             return if !-f $_;
 
-            my $p = OTRS::OPM::Parser->new( opm_file => $_ );
+            my $p = OPM::Parser->new( opm_file => $_ );
             $p->parse;
             $p;
         }
@@ -54,22 +54,22 @@ coerce OPMFile =>
 
 =head1 TYPES
 
-=head2 OTRSVersion
+=head2 OPMVersion
 
-An OTRS version looks like 2.4.5 or 6.0.1.
+An OPM version looks like 2.4.5 or 6.0.1.
 
-=head2 OTRSVersionWildcard
+=head2 OPMVersionWildcard
 
-An OTRS version with wildcard as used in Addons. To define a version of the OTRS framework
+An OPM version with wildcard as used in Addons. To define a version of the OPM framework
 that is needed to install the addon, the developer can use 'x' as a wildcard.
 
-E.g. Addons for OTRS 6.x can be installed on any OTRS 6 installation, whilst addons that
-define 2.4.x as the framework version can only installed on any OTRS 2.4 installation, but
-not on OTRS 2.3 installation.
+E.g. Addons for OPM 6.x can be installed on any OPM 6 installation, whilst addons that
+define 2.4.x as the framework version can only installed on any OPM 2.4 installation, but
+not on OPM 2.3 installation.
 
 =head2 OPMFile
 
-An object of L<OTRS::OPM::Parser>.
+An object of L<OPM::Parser>.
 
 It checks if the file exists and can be parsed without an error.
 
@@ -79,9 +79,9 @@ It checks if the file exists and can be parsed without an error.
 
 =over 4
 
-=item * From String to OTRS::OPM::Parser
+=item * From String to OPM::Parser
 
-When a string is given, it is coerced into an L<OTRS::OPM::Parser> object.
+When a string is given, it is coerced into an L<OPM::Parser> object.
 
 =back
 

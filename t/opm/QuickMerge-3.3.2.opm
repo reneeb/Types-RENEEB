@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<otrs_package version="1.0">
+<opm_package version="1.0">
     <CVS>$Id: QuickMerge.sopm,v 1.1.1.1 2011/04/15 07:49:58 rb Exp $</CVS>
     <Name>QuickMerge</Name>
     <Version>3.3.2</Version>
@@ -105,4 +105,4 @@ LCBhbiBBSkFYIGNhbGwgaXMgc2VudCB0byBtZXJnZSBhbGwgdGlja2V0cyBpbnRvIHRoZSBvbGRl
 c3Qgc2VsZWN0ZWQgdGlja2V0LgoK
 </File>
     </Filelist>
-<BuildDate>2013-11-05 10:08:54</BuildDate><BuildHost>lvps83-169-20-244.dedicated.hosteurope.de</BuildHost></otrs_package>
+<BuildDate>2013-11-05 10:08:54</BuildDate><BuildHost>lvps83-169-20-244.dedicated.hosteurope.de</BuildHost></opm_package>

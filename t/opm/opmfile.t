@@ -8,22 +8,22 @@ use lib dirname(__FILE__);
 
 use Test::Spec;
 use OPMFileTest;
-use OTRS::OPM::Parser;
+use OPM::Parser;
 
 my $valid_opm = dirname(__FILE__) . '/QuickMerge-3.3.2.opm';
 my $invalid   = dirname(__FILE__) . '/version.opm';
 my $not_opm   = dirname(__FILE__) . '/version.t';
 
 describe 'OPMFile' => sub {
-    it 'should accept a OTRS::OPM::Parser object' => sub {
-        my $p = OTRS::OPM::Parser->new( opm_file => $valid_opm );
+    it 'should accept a OPM::Parser object' => sub {
+        my $p = OPM::Parser->new( opm_file => $valid_opm );
         $p->parse;
         is $p->name, 'QuickMerge';
 
         my $t = OPMFileTest->new( file => $p );
 
         isa_ok $t, 'OPMFileTest';
-        isa_ok $t->file, 'OTRS::OPM::Parser';
+        isa_ok $t->file, 'OPM::Parser';
         is $t->file->name, 'QuickMerge';
     };
 
@@ -31,7 +31,7 @@ describe 'OPMFile' => sub {
         my $t = OPMFileTest->new( file => $valid_opm );
 
         isa_ok $t, 'OPMFileTest';
-        isa_ok $t->file, 'OTRS::OPM::Parser';
+        isa_ok $t->file, 'OPM::Parser';
         is $t->file->name, 'QuickMerge';
     };
 
