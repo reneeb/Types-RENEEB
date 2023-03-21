@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/reneeb/Types-RENEEB.svg?branch=master)](https://travis-ci.org/reneeb/Types-RENEEB)
-[![Kwalitee status](http://cpants.cpanauthors.org/dist/Types-RENEEB.png)](https://cpants.cpanauthors.org/dist/Types-RENEEB)
+[![Kwalitee status](https://cpants.cpanauthors.org/dist/Types-RENEEB.png)](https://cpants.cpanauthors.org/dist/Types-RENEEB)
 [![GitHub issues](https://img.shields.io/github/issues/reneeb/Types-RENEEB.svg)](https://github.com/reneeb/Types-RENEEB/issues)
 
 # NAME
@@ -118,7 +118,7 @@ not on OPM 2.3 installation.
 
 ### OPMFile
 
-An object of [OPM::Parser](https://metacpan.org/pod/OPM%3A%3AOPM%3A%3AParser).
+An object of [OPM::Parser](https://metacpan.org/pod/OPM%3A%3AParser).
 
 It checks if the file exists and can be parsed without an error.
 
