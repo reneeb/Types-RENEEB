@@ -1,6 +1,7 @@
-[![Build Status](https://travis-ci.org/reneeb/Types-RENEEB.svg?branch=master)](https://travis-ci.org/reneeb/Types-RENEEB)
 [![Kwalitee status](https://cpants.cpanauthors.org/dist/Types-RENEEB.png)](https://cpants.cpanauthors.org/dist/Types-RENEEB)
 [![GitHub issues](https://img.shields.io/github/issues/reneeb/Types-RENEEB.svg)](https://github.com/reneeb/Types-RENEEB/issues)
+[![CPAN Cover Status](https://cpancoverbadge.perl-services.de/Types-RENEEB-0.10)](https://cpancoverbadge.perl-services.de/Types-RENEEB-0.10)
+[![Cpan license](https://img.shields.io/cpan/l/Types-RENEEB.svg)](https://metacpan.org/release/Types-RENEEB)
 
 # NAME
 
@@ -8,34 +9,36 @@ Types::RENEEB - Several predefined Type::Tiny types
 
 # VERSION
 
-version 0.09
+version 0.10
 
 # SYNOPSIS
 
-    package TypesTest;
+```perl
+package TypesTest;
 
-    use strict;
-    use warnings;
+use strict;
+use warnings;
 
-    use Moo;
-    use Types::RENEEB qw(
-        DistName DistVersion
-        OPMVersion OPMVersionWildcard
-    );
+use Moo;
+use Types::RENEEB qw(
+    DistName DistVersion
+    OPMVersion OPMVersionWildcard
+);
 
-    has distname     => ( is => 'ro', isa => DistName );
-    has distversion  => ( is => 'ro', isa => DistVersion );
-    has opm_version => ( is => 'ro', isa => OPMVersion );
+has distname     => ( is => 'ro', isa => DistName );
+has distversion  => ( is => 'ro', isa => DistVersion );
+has opm_version => ( is => 'ro', isa => OPMVersion );
 
-    sub check_opm_version {
-        OPMVersion->('2.0.0');
-    }
+sub check_opm_version {
+    OPMVersion->('2.0.0');
+}
 
-    sub check_opm_version {
-        OPMVersion->('2.0.x');
-    }
+sub check_opm_version {
+    OPMVersion->('2.0.x');
+}
 
-    1;
+1;
+```
 
 # DESCRIPTION
 
@@ -56,50 +59,62 @@ These `Types::` modules are shipped in this distribution:
 
 _DistName_-_DistVersion_
 
-    package MyClass;
+```perl
+package MyClass;
 
-    use Moo;
-    use Types::Dist qw(DistName);
+use Moo;
+use Types::Dist qw(DistName);
 
-    has dist => ( is => 'ro', isa => DistName );
+has dist => ( is => 'ro', isa => DistName );
 
-    1;
+1;
+```
 
 And then use your class:
 
-    my $object   = MyClass->new( dist => 'Types-RENEEB-0.09' );
-    my $object   = MyClass->new( dist => '0.09' );         # fails
-    my $object   = MyClass->new( dist => 'Types-RENEEB' ); # fails
+```perl
+my $object   = MyClass->new( dist => 'Types-RENEEB-0.09' );
+my $object   = MyClass->new( dist => '0.09' );         # fails
+my $object   = MyClass->new( dist => 'Types-RENEEB' ); # fails
+```
 
 ### DistName
 
 A name of a distribution
 
-    my $object   = MyClass->new( dist => 'Types-RENEEB' ); # ok
+```perl
+my $object   = MyClass->new( dist => 'Types-RENEEB' ); # ok
+```
 
 ### DistVersion
 
 A version of a distribution
 
-    my $object   = MyClass->new( dist => '0.09' ); # ok
+```perl
+my $object   = MyClass->new( dist => '0.09' ); # ok
+```
 
 ### CPANfile
 
 An instance of [Module::CPANfile](https://metacpan.org/pod/Module%3A%3ACPANfile)
 
-    package MyClass;
+```perl
+package MyClass;
 
-    use Moo;
-    use Types::Dist qw(CPANfile);
+use Moo;
+use Types::Dist qw(CPANfile);
 
-    has prereqs => ( is => 'ro', isa => CPANfile, coerce => 1 );
+has prereqs => ( is => 'ro', isa => CPANfile, coerce => 1 );
 
-    1;
+1;
+```
 
 And then use your class:
 
-    my $object   = MyClass->new( prereqs => '/path/to/cpanfile' );
-    my @features = $object->prereqs->features; # call features method from Module::CPANfile
+```perl
+my $object   = MyClass->new( prereqs => '/path/to/cpanfile' );
+my @features = $object->prereqs->features; # call features method from Module::CPANfile
+```
 
 ## Types::OPM
 
@@ -186,4 +201,6 @@ This software is Copyright (c) 2019 by Renee Baecker.
 
 This is free software, licensed under:
 
-    The Artistic License 2.0 (GPL Compatible)
+```
+The Artistic License 2.0 (GPL Compatible)
+```
